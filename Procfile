@@ -1,3 +1,3 @@
-web: gunicorn project:user
-worker: python3 main.py
-processor: python3 admin.py
+web: gunicorn project:app
+main: python3 project/main/main.py
+admin: python3 project/admin/admin.py
