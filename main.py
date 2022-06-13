@@ -1,44 +1,52 @@
 import os
 from flask import Flask, request
-import sqlite3
 import telebot
 from telebot import types
+import mysql.connector
 
 TOKEN = '5591676559:AAEU5XlHxGuz3fq0vdDkjCS9o3coT5o1JKg'
 APP_URL = f'https://quqpuline.herokuapp.com/{TOKEN}'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 
+db = mysql.connector.connect(
+  host="srv-pleskdb49.ps.kz:3306",
+  user="izderkz_magzhan",
+  password="@Magzhan1201199445",
+  database="izderkz_database"
+)
+
+cursor = db.cursor()
 
 """============================DATABASE========================================================================"""
 def db_table_val1(user_id: int, user_name: str, user_surname: str, username: str):
     cursor.execute('INSERT OR IGNORE INTO db_f_1 (user_id, user_name, user_surname, username) VALUES (?, ?, ?, ?)',
                    (user_id, user_name, user_surname, username))
-    conn.commit()
+    db.commit()
 def db_table_val2(user_id: int, user_name: str, user_surname: str, username: str):
     cursor.execute('INSERT OR IGNORE INTO db_f_2 (user_id, user_name, user_surname, username) VALUES (?, ?, ?, ?)',
                    (user_id, user_name, user_surname, username))
-    conn.commit()
+    db.commit()
 def db_table_val3(user_id: int, user_name: str, user_surname: str, username: str):
     cursor.execute('INSERT OR IGNORE INTO db_f_3 (user_id, user_name, user_surname, username) VALUES (?, ?, ?, ?)',
                    (user_id, user_name, user_surname, username))
-    conn.commit()
+    db.commit()
 def db_table_val4(user_id: int, user_name: str, user_surname: str, username: str):
     cursor.execute('INSERT OR IGNORE INTO db_f_4 (user_id, user_name, user_surname, username) VALUES (?, ?, ?, ?)',
                    (user_id, user_name, user_surname, username))
-    conn.commit()
+    db.commit()
 def db_table_val5(user_id: int, user_name: str, user_surname: str, username: str):
     cursor.execute('INSERT OR IGNORE INTO db_f_5 (user_id, user_name, user_surname, username) VALUES (?, ?, ?, ?)',
                    (user_id, user_name, user_surname, username))
-    conn.commit()
+    db.commit()
 def db_table_val6(user_id: int, user_name: str, user_surname: str, username: str):
     cursor.execute('INSERT OR IGNORE INTO db_f_6 (user_id, user_name, user_surname, username) VALUES (?, ?, ?, ?)',
                    (user_id, user_name, user_surname, username))
-    conn.commit()
+    db.commit()
 def db_table_val7(user_id: int, user_name: str, user_surname: str, username: str):
     cursor.execute('INSERT OR IGNORE INTO db_f_7 (user_id, user_name, user_surname, username) VALUES (?, ?, ?, ?)',
                    (user_id, user_name, user_surname, username))
-    conn.commit()
+    db.commit()
 """==============================================DATABASE_FINISH==================================================="""
 
 Fakultet1 = "Педагогика және психология институты"
@@ -54,8 +62,7 @@ kezekOutBtn = "Кезектен шығу"
 stopBot = "Ботты тоқтату"
 homePage = "Бастапқы бетке оралу"
 showKezek = "Нөмір қабылдануда!"
-conn = sqlite3.connect('db/database.db', check_same_thread=False)
-cursor = conn.cursor()
+
 
 @bot.message_handler(commands=['start'])
 def first(message):
@@ -236,7 +243,7 @@ def fakultetF1(message):
         us_id = message.from_user.id
         id_input = us_id
         cursor.execute("DELETE FROM db_f_1 WHERE user_id=?", (id_input,))
-        conn.commit()
+        db.commit()
         bot.send_message(message.chat.id, "Кезектен шықтыңыз!")
         keyboard = types.ReplyKeyboardMarkup(True, False)
         keyboard.add(kezekInBtn)
@@ -320,7 +327,7 @@ def fakultetF2(message):
         us_id = message.from_user.id
         id_input = us_id
         cursor.execute("DELETE FROM db_f_2 WHERE user_id=?", (id_input,))
-        conn.commit()
+        db.commit()
         bot.send_message(message.chat.id, "Кезектен шықтыңыз!")
         keyboard = types.ReplyKeyboardMarkup(True, False)
         keyboard.add(kezekInBtn)
@@ -402,7 +409,7 @@ def fakultetF3(message):
         us_id = message.from_user.id
         id_input = us_id
         cursor.execute("DELETE FROM db_f_3 WHERE user_id=?", (id_input,))
-        conn.commit()
+        db.commit()
         bot.send_message(message.chat.id, "Кезектен шықтыңыз!")
         keyboard = types.ReplyKeyboardMarkup(True, False)
         keyboard.add(kezekInBtn)
@@ -484,7 +491,7 @@ def fakultetF4(message):
         us_id = message.from_user.id
         id_input = us_id
         cursor.execute("DELETE FROM db_f_4 WHERE user_id=?", (id_input,))
-        conn.commit()
+        db.commit()
         bot.send_message(message.chat.id, "Кезектен шықтыңыз!")
         keyboard = types.ReplyKeyboardMarkup(True, False)
         keyboard.add(kezekInBtn)
@@ -566,7 +573,7 @@ def fakultetF5(message):
         us_id = message.from_user.id
         id_input = us_id
         cursor.execute("DELETE FROM db_f_5 WHERE user_id=?", (id_input,))
-        conn.commit()
+        db.commit()
         bot.send_message(message.chat.id, "Кезектен шықтыңыз!")
         keyboard = types.ReplyKeyboardMarkup(True, False)
         keyboard.add(kezekInBtn)
@@ -648,7 +655,7 @@ def fakultetF6(message):
         us_id = message.from_user.id
         id_input = us_id
         cursor.execute("DELETE FROM db_f_6 WHERE user_id=?", (id_input,))
-        conn.commit()
+        db.commit()
         bot.send_message(message.chat.id, "Кезектен шықтыңыз!")
         keyboard = types.ReplyKeyboardMarkup(True, False)
         keyboard.add(kezekInBtn)
@@ -730,7 +737,7 @@ def fakultetF7(message):
         us_id = message.from_user.id
         id_input = us_id
         cursor.execute("DELETE FROM db_f_7 WHERE user_id=?", (id_input,))
-        conn.commit()
+        db.commit()
         bot.send_message(message.chat.id, "Кезектен шықтыңыз!")
         keyboard = types.ReplyKeyboardMarkup(True, False)
         keyboard.add(kezekInBtn)
