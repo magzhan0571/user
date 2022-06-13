@@ -1,3 +1,3 @@
-web: gunicorn project:app
-main: python3 project/main/main.py
-admin: python3 project/admin/admin.py
+web: gunicorn -b 0.0.0.0:$PORT blog.wsgi
+worker1: python main.py
+worker2: python admin.py
