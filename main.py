@@ -55,8 +55,10 @@ stopBot = "Ботты тоқтату"
 homePage = "Бастапқы бетке оралу"
 showKezek = "Нөмір қабылдануда!"
 
-branch = os.environ.get("main/db/database.db")
-conn = sqlite3.connect(branch, check_same_thread=False)
+b = repo.get_branch(branch="main")
+file = repo.get_contents(path="db", ref=b.commit.sha)
+
+conn = sqlite3.connect(file, check_same_thread=False)
 
 cursor = conn.cursor()
 
