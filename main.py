@@ -60,7 +60,7 @@ repo = github.get_repo(f"{magzhan0571}/{user}")
 repo.get_branch(branch=main)
 file_contents = repo.get_contents(f"{db}/{database.db}")
 
-conn = sqlite3.connect(file_contents, check_same_thread=False)
+conn = sqlite3.connect('file_contents', check_same_thread=False)
 
 cursor = conn.cursor()
 
