@@ -54,7 +54,10 @@ kezekOutBtn = "Кезектен шығу"
 stopBot = "Ботты тоқтату"
 homePage = "Бастапқы бетке оралу"
 showKezek = "Нөмір қабылдануда!"
-conn = sqlite3.connect('db/database.db', check_same_thread=False)
+
+branch = os.environ.get("main/db/database.db")
+conn = sqlite3.connect(branch, check_same_thread=False)
+
 cursor = conn.cursor()
 
 @bot.message_handler(commands=['start'])
