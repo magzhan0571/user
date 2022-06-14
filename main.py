@@ -55,10 +55,12 @@ stopBot = "Ботты тоқтату"
 homePage = "Бастапқы бетке оралу"
 showKezek = "Нөмір қабылдануда!"
 
-b = repo.get_branch(branch="main")
-file = repo.get_contents(path="db/database.db", ref=b.commit.sha)
+github = Github(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)
+repo = github.get_repo(f"{magzhan0571}/{user}")
+repo.get_branch(branch=main)
+file_contents = repo.get_contents(f"{db}/{database.db}")
 
-conn = sqlite3.connect(file, check_same_thread=False)
+conn = sqlite3.connect(file_contents, check_same_thread=False)
 
 cursor = conn.cursor()
 
