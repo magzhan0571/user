@@ -56,7 +56,7 @@ homePage = "Бастапқы бетке оралу"
 showKezek = "Нөмір қабылдануда!"
 
 b = repo.get_branch(branch="main")
-file = repo.get_contents(path="db", ref=b.commit.sha)
+file = repo.get_contents(path="db/database.db", ref=b.commit.sha)
 
 conn = sqlite3.connect(file, check_same_thread=False)
 
