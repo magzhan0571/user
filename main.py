@@ -1,15 +1,20 @@
 import os
 from flask import Flask, request
-import sqlite3
 import telebot
 from telebot import types
 import mysql.connector
 
-TOKEN = '5591676559:AAEU5XlHxGuz3fq0vdDkjCS9o3coT5o1JKg'
+TOKEN = '5464338504:AAFXhaac7qyQLZlzRUCCv-z7lSi5t-yjTug'
 APP_URL = f'https://quqpuline.herokuapp.com/{TOKEN}'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
-
+"""
+conn = mysql.connector.connect(
+    host="localhost",
+    user="root",
+    password="root",
+    database="test"
+)"""
 
 conn = mysql.connector.connect(
     host="srv-pleskdb49.ps.kz",
@@ -92,6 +97,9 @@ def fakultetF1(message):
             sql = 'INSERT INTO db_f_1 (user_id, user_name, user_surname, username) VALUES (%s, %s, %s, %s)'
             data = (us_id, us_name, us_sname, username)
             cursor.execute(sql, data)
+            cursor.fetchall()
+            conn.commit()
+
 
         keyboard = types.ReplyKeyboardMarkup(True, False)
         keyboard.add(kezekInBtn)
@@ -107,6 +115,11 @@ def fakultetF1(message):
 
         bot.send_message(message.chat.id, 'Сіздің кезегіңіз қабылданды!')
         bot.send_message(message.chat.id, "Кезек нөмірі: " + str(result[0]))
+"""
+bot.polling(none_stop=True)
+
+if __name__ == '__main__':
+    bot.infinity_polling()"""
 
 
 @server.route('/' + TOKEN, methods=['POST'])
