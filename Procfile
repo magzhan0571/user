@@ -1,1 +1,1 @@
-web: python3 main.py & admin.py & wait -n
+web: python3 main.py
