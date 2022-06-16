@@ -4,7 +4,7 @@ import sqlite3
 import telebot
 from telebot import types
 
-TOKEN = '5591676559:AAEU5XlHxGuz3fq0vdDkjCS9o3coT5o1JKg'
+TOKEN = '5464338504:AAFXhaac7qyQLZlzRUCCv-z7lSi5t-yjTug'
 APP_URL = f'https://quqpuline.herokuapp.com/{TOKEN}'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
