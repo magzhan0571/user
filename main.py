@@ -5,7 +5,7 @@ import telebot
 from telebot import types
 
 TOKEN = '5464338504:AAFXhaac7qyQLZlzRUCCv-z7lSi5t-yjTug'
-APP_URL = f'https://quqpuline.herokuapp.com/{TOKEN}'
+APP_URL = f'https://qazukpuline.herokuapp.com/{TOKEN}'
 bot = telebot.TeleBot(TOKEN)
 server = Flask(__name__)
 
